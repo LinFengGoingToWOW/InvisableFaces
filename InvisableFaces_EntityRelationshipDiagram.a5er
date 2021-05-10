@@ -1,0 +1,152 @@
+﻿# A5:ER FORMAT:14
+# A5:ER ENCODING:UTF8
+# A5:ER Mk-1 Copyright (C)2007 m.matsubara
+# A5:SQL Mk-2 Copyright (C)1997 m.matsubara
+#  https://a5m2.mmatsubara.com
+
+[Manager]
+ProjectName=
+Author=
+MaxEntityRowShow=1000
+ReadOnlyRecommend=0
+Page=Main
+PageInfo="Main",7,"A3Landscape",$FFFFFF
+LogicalView=1
+DecodeDomain=0
+ViewModePageIndividually=1
+ViewMode=7
+ViewFormat=0
+UseNondependenceDashLine=0
+FontName=Tahoma
+FontSize=6
+PaperSize=A4Landscape
+HeaderLeft=
+HeaderCenter=
+HeaderRight=
+FooterLeft=
+FooterCenter=
+FooterRight=
+ShowPageoutRelation=1
+RDBMSType=4
+RDBMSTypeName=Microsoft SQL Server 2008
+GenerateDropTableStatement=1
+DropTableIfExists=0
+BackupRestoreTempTable=0
+DefaultPkName=%0:s_PKC
+DefaultPkIndexName=%0:s_PKI
+DefaultIndexName=%0:s_IX%1:d
+DefaultFkName=%0:s_FK%1:d
+SqlSeparator=0
+UpperCaseKeyword=0
+ShowTag=1
+ShowCommonAttributes=0
+
+[Entity]
+PName=actors
+LName=演员
+Comment=
+TableOption=
+Page=MAIN
+Left=100
+Top=1000
+Field="no","no","int","NOT NULL",0,"","",$FFFFFFFF,"IDENTITY(1,1)"
+Field="url","url","nvarchar(200)","NOT NULL",,"","",$FFFFFFFF,""
+Field="名字","name","nvarchar(20)","NOT NULL",,"","",$FFFFFFFF,""
+Field="性别","gender","nchar(1)","NOT NULL",,"","女：０、男：１、不明：9",$FFFFFFFF,""
+Field="出生年份","birthyear","numeric(4, 0)","NOT NULL",,"","",$FFFFFFFF,""
+Index==0,url
+Index==0,name
+Index==0,birthyear
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20210506212007
+Position="MAIN",100,1000
+ZOrder=-1
+
+[Entity]
+PName=checklists
+LName=爬取清单
+Comment=
+TableOption=
+Page=MAIN
+Left=100
+Top=100
+Field="no","no","int","NOT NULL",0,"","",$FFFFFFFF,"IDENTITY(1,1)"
+Field="表名","table_name","nvarchar(45)","NOT NULL",,"","",$FFFFFFFF,""
+Field="Url","url","nvarchar(200)","NOT NULL",,"","",$FFFFFFFF,""
+Field="爬取状态","is_checked","bit","NOT NULL",,"","",$FFFFFFFF,""
+Field="有无义项","has_items","bit","NOT NULL",,"","",$FFFFFFFF,""
+Index==0,table_name,url
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20210509232500
+Position="MAIN",100,100
+ZOrder=-2
+
+[Entity]
+PName=tv_dramas
+LName=电视剧
+Comment=
+TableOption=
+Page=MAIN
+Left=100
+Top=400
+Field="no","no","int","NOT NULL",0,"","",$FFFFFFFF,"IDENTITY(1,1)"
+Field="作品Url","url","nvarchar(200)","NOT NULL",,"","",$FFFFFFFF,""
+Field="作品名","name","nvarchar(200)","NOT NULL",,"","",$FFFFFFFF,""
+Field="首播年份","original_release_year","numeric(4, 0)","NOT NULL",,"","",$FFFFFFFF,""
+Field="制作年份","production_year","numeric(4, 0)","NOT NULL",,"","",$FFFFFFFF,""
+Field="制片地区","area","nvarchar(50)",,,"","",$FFFFFFFF,""
+Index==0,url
+Index==0,name
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20210509232244
+Position="MAIN",100,400
+ZOrder=-3
+
+[Entity]
+PName=tv_dramas_actors_staffs
+LName=电视剧演职员
+Comment=
+TableOption=
+Page=MAIN
+Left=100
+Top=700
+Field="no","no","int","NOT NULL",0,"","",$FFFFFFFF,"IDENTITY(1,1)"
+Field="作品Url","tv_drama_url","nvarchar(200)","NOT NULL",,"","",$FFFFFFFF,""
+Field="演职员类型","type","nchar(1)","NOT NULL",,"","0.演员，1.导演，2.编剧",$FFFFFFFF,""
+Field="演职员Url","actor_staff_url","nvarchar(200)","NOT NULL",,"","",$FFFFFFFF,""
+Index==0,tv_drama_url
+Index==0,actor_staff_url
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20210509232313
+Position="MAIN",100,700
+ZOrder=-4
+
+[Entity]
+PName=staffs
+LName=职员表
+Comment=
+TableOption=
+Page=MAIN
+Left=100
+Top=1200
+Field="no","no","int","NOT NULL",0,"","",$FFFFFFFF,"IDENTITY(1,1)"
+Field="url","url","nvarchar(200)","NOT NULL",,"","",$FFFFFFFF,""
+Field="类型","type","nchar(1)","NOT NULL",,"","导演：1，编剧：2",$FFFFFFFF,""
+Field="名字","name","nvarchar(20)","NOT NULL",,"","",$FFFFFFFF,""
+Field="性别","gender","nchar(1)","NOT NULL",,"","女：0，男：1， 不明：9",$FFFFFFFF,""
+Field="出生年份","birthyear","numeric(4, 0)","NOT NULL",,"","",$FFFFFFFF,""
+Index==0,url,type
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20210506212014
+Position="MAIN",100,1200
+ZOrder=0
